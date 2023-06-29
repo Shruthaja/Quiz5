@@ -13,7 +13,7 @@ from nltk.tokenize import word_tokenize
 nltk.download('punkt')
 nltk.download('averaged_perceptron_tagger')
 nltk.download('stopwords')
-#deploy
+#deploy2
 app = Flask(__name__)
 server = 'assignmentservershruthaja.database.windows.net'
 database = 'assignemnt3'
@@ -54,7 +54,7 @@ def count():
         book=getbook()
         book=clean(book,stp_lang='english',stemming=False)
         print(book)
-        myFD = nltk.FreqDist(book)
+        myFD = FreqDist(book)
         total = float(sum(myFD.values()))
         for i in n:
             d[i]=float(myFD[i])
@@ -72,6 +72,7 @@ def page2():
         toreplace=request.form['toreplace']
         n=request.form['lines']
         book = getbook()
+        book=book.replace('b"',"")
         book=clean(book)
         book=book.replace(replace,toreplace)
         book=book.split('.')
