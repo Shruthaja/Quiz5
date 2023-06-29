@@ -10,11 +10,9 @@ from nltk.corpus import stopwords
 from nltk.probability import FreqDist
 from nltk.tag import pos_tag
 from nltk.tokenize import word_tokenize
-
-# nltk.download('punkt')
-# nltk.download('averaged_perceptron_tagger')
-# nltk.download('stopwords')
-# test="George is very clever but he doesn’t study his lessons"
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger')
+nltk.download('stopwords')
 
 app = Flask(__name__)
 server = 'assignmentservershruthaja.database.windows.net'
@@ -109,13 +107,10 @@ def noun(n):
     # Filter out stopwords
     stop_words = set(stopwords.words('english'))
     filtered_tokens = [word for word in tokens if word.lower() not in stop_words]
-
     # Perform part-of-speech tagging
     tagged_words = pos_tag(filtered_tokens)
-
     # Extract nouns from tagged words
     nouns = [word for word, pos in tagged_words if pos.startswith('NN')]
-
     # Calculate the frequency distribution
     freq_dist = FreqDist(nouns)
     return (freq_dist.most_common(int(n)))
