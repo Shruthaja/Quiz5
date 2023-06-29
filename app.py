@@ -29,7 +29,6 @@ cursor = conn.cursor()
 def getbook():
     account_url = "DefaultEndpointsProtocol=https;AccountName=shruthaja;AccountKey=FvxC1NCWJQuBHKf77+JJaniZDHYUsBzqjy9H2o2o4INHFJRAXUTl6E3VB+2wXX3SsjFsMy5Vpm/R+ASto6SosQ==;EndpointSuffix=core.windows.net"
     blob_account_client = BlobServiceClient.from_connection_string(account_url)
-    bc = blob_account_client.get_container_client("assignment5").list_blob_names()
     j = blob_account_client.get_container_client("assignment5").download_blob("RomeoJuliet_Shakespere.txt")
     book = str(j.read())
     return book
