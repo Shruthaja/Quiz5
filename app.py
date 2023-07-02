@@ -36,9 +36,8 @@ def index():
     result = {}
     if request.method == "POST":
         n = request.form['number']
-        # for i in noun(n):
-        #     result[i[0]]=i[1]
-        # print(result)
+        for i in noun(n):
+            result[i[0]]=i[1]
     return render_template('index.html', result=result,d={},total={})
 
 
@@ -101,20 +100,20 @@ def page3():
                 continue
     return render_template('page3.html', result=result)
 
-# def noun(n):
-#     book = getbook()
-#     book = clean(book)
-#     tokens = word_tokenize(book)
-#     # Filter out stopwords
-#     stop_words = set(stopwords.words('english'))
-#     filtered_tokens = [word for word in tokens if word.lower() not in stop_words]
-#     # Perform part-of-speech tagging
-#     tagged_words = pos_tag(filtered_tokens)
-#     # Extract nouns from tagged words
-#     nouns = [word for word, pos in tagged_words if pos.startswith('NN')]
-#     # Calculate the frequency distribution
-#     freq_dist = FreqDist(nouns)
-#     return (freq_dist.most_common(int(n)))
+def noun(n):
+    book = getbook()
+    book = clean(book)
+    tokens = word_tokenize(book)
+    # Filter out stopwords
+    stop_words = set(stopwords.words('english'))
+    filtered_tokens = [word for word in tokens if word.lower() not in stop_words]
+    # Perform part-of-speech tagging
+    tagged_words = pos_tag(filtered_tokens)
+    # Extract nouns from tagged words
+    nouns = [word for word, pos in tagged_words if pos.startswith('NN')]
+    # Calculate the frequency distribution
+    freq_dist = FreqDist(nouns)
+    return (freq_dist.most_common(int(n)))
 
 
 if __name__ == '__main__':
