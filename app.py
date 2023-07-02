@@ -1,4 +1,4 @@
-# import nltk
+import nltk
 import pyodbc
 from azure.storage.blob import BlobServiceClient
 from cleantext import clean
@@ -10,9 +10,9 @@ from nltk.corpus import stopwords
 from nltk.probability import FreqDist
 from nltk.tag import pos_tag
 from nltk.tokenize import word_tokenize
-# nltk.download('punkt')
-# nltk.download('averaged_perceptron_tagger')
-# nltk.download('stopwords')
+nltk.download('punkt')
+nltk.download('averaged_perceptron_tagger')
+nltk.download('stopwords')
 #deploy2
 app = Flask(__name__)
 server = 'assignmentservershruthaja.database.windows.net'
